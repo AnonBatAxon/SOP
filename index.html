@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Police Training Portal</title>
+    <style>
+        :root {
+            --police-blue: #2581dd;
+            --police-gold: #ffd700;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--dark-gray);
+            background-color: #092f68;
+             background-image: url('index_files/Sharlok_Homes_PD_Dept.gif'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.76);
+            z-index: -1;
+        }
+        .header {
+            background-color: var(--police-blue);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        
+        .header p {
+            margin: 0.5rem 0 0;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: rgb(0, 120, 233)
+            font-size: 2rem;
+            position: relative;
+        }
+        
+        .page-titleh{
+color: white
+        }
+        .page-title:after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--police-gold);
+            margin: 1rem auto;
+        }
+        
+        .card-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .training-card {
+            width: 350px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .training-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-bg {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .card-bg:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent, rgba(0,70,139,0.3));
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+            position: relative;
+        }
+        
+        .card-content h3 {
+            margin-top: 0;
+            color: var(--police-blue);
+            font-size: 1.5rem;
+        }
+        
+        .card-content p {
+            color: var(--dark-gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--police-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: #003366;
+        }
+        
+        .btn-gold {
+            background-color: var(--police-gold);
+            color: var(--dark-gray);
+        }
+        
+        .btn-gold:hover {
+            background-color: #e6c200;
+        }
+        
+        .badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background-color: var(--police-gold);
+            color: var(--dark-gray);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        footer {
+            background-color: var(--police-blue);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+
+         body {
+    -webkit-user-select: none; /* Chrome, Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+    user-select: none;         /* Standard syntax */
+    -webkit-user-drag: none;   /* Prevent image dragging */
+  }
+
+  img {
+    pointer-events: none;
+    -webkit-user-drag: none;
+  }
+    </style>
+</head>
+<body>
+    
+    <br><br><br><br><br><br>
+    <div class="container">
+        <div class="page-title">
+            <h2 class="page-titleh">Select Training Option</h2>
+        </div>
+        
+        <div class="card-container">
+            <!-- Simple Training Card -->
+            <div class="training-card">
+                <div class="card-bg" style="background-image: url('index_files/ameturejpg.jpg');"></div>
+                <div class="card-content">
+                    <span class="badge">Basic</span>
+                    <h3>Simple Training</h3>
+                    <p>An introductory course covering essential police procedures and protocols. Perfect for new recruits or officers needing a refresher on fundamental concepts.</p>
+                    <a href="SOP-Short.html" class="btn">Start Training</a>
+                </div>
+            </div>
+            
+            <!-- Full SOP Card -->
+            <div class="training-card">
+                <div class="card-bg" style="background-image: url('index_files/OIP.jpg');"></div>
+                <div class="card-content">
+                    <span class="badge">Advanced</span>
+                    <h3>Full SOP Training</h3>
+                    <p>Comprehensive Standard Operating Procedures training covering all aspects of police work. Includes detailed scenarios, legal updates, and advanced techniques.</p>
+                     <a href="SOP-Full.html" class="btn">Start Training</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+ 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Disable all keyboard input
+  document.addEventListener('keydown', function(e) {
+    // Allow minimal navigation keys
+    const allowedKeys = [
+      9,   // Tab
+      13,  // Enter
+      27,  // Escape
+      37,  // Arrow Left
+      38,  // Arrow Up
+      39,  // Arrow Right
+      40,  // Arrow Down
+      112, // F1
+      113, // F2
+      114, // F3
+      115, // F4
+      116, // F5
+      117, // F6
+      118, // F7
+      119, // F8
+      120, // F9
+      121, // F10
+      122, // F11
+      123  // F12
+    ];
+    
+    if (!allowedKeys.includes(e.keyCode)) {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }
+    
+    // Special case: Block Ctrl/Alt/Meta combinations
+    if (e.ctrlKey || e.altKey || e.metaKey) {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }
+  }, true);
+
+  // Disable right-click context menu
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    
+    return false;
+  });
+
+  // Disable text selection
+  document.addEventListener('selectstart', function(e) {
+    e.preventDefault();
+    return false;
+  });
+
+  // Disable drag-and-drop
+  document.addEventListener('dragstart', function(e) {
+    e.preventDefault();
+    return false;
+  });
+});
+
+
+
+// Detect print screen key and other screenshot attempts
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'PrintScreen' || 
+      (e.ctrlKey && e.shiftKey && (e.key === 'S' || e.key === 'P'))) {
+    e.preventDefault();
+    alert('Screenshots are disabled on this page');
+    // Clear clipboard
+    navigator.clipboard.writeText('Screenshot disabled by security policy');
+  }
+});
+
+// Periodically check for screenshot tools
+setInterval(() => {
+  if (window.outerWidth - window.innerWidth > 200 || 
+      window.outerHeight - window.innerHeight > 200) {
+    // Detected developer tools or screen capture tool
+    document.body.innerHTML = '<h1 style="color:red">SECURITY VIOLATION DETECTED</h1>';
+    window.location.href = '/security-violation';
+  }
+}, 1000);
+</script>
+
+
+ <script>
+    // Robust initialization
+    document.addEventListener('DOMContentLoaded', function() {
+        // First try initialization
+        if (window.lucide) {
+            lucide.createIcons();
+        } else {
+            // Fallback loading
+            console.warn('Lucide not loaded - retrying...');
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/lucide@latest';
+            script.onload = () => {
+                console.log('Lucide loaded successfully');
+                lucide.createIcons();
+            };
+            document.body.appendChild(script);
+        }
+        
+        // MutationObserver for dynamic content
+        const observer = new MutationObserver(() => {
+            if (window.lucide) lucide.createIcons();
+        });
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    });
+    </script>
+
+</body>
+</html>

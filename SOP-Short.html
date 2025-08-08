@@ -1,0 +1,2175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Police Training Guide - San Andreas State Police</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+        }
+
+        :root {
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --secondary: #64748b;
+            --accent: #3b82f6;
+            --success: #059669;
+            --warning: #d97706;
+            --danger: #dc2626;
+            
+            --bg-light: #ffffff;
+            --bg-gray: #f8fafc;
+            --bg-dark: #0f172a;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-light: #94a3b8;
+            --border: #e2e8f0;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-primary);
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        body.dark {
+            --bg-light: #0f172a;
+            --bg-gray: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-light: #94a3b8;
+            --border: #334155;
+        }
+
+        .font-roboto {
+            font-family: 'Roboto', system-ui, -apple-system, sans-serif;
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        body.dark .header {
+            background: rgba(15, 23, 42, 0.95);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo svg {
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+
+        .title-section h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .title-section p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: transparent;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 0.875rem;
+            color: var(--text-primary);
+        }
+
+        .theme-toggle:hover {
+            background: var(--bg-gray);
+        }
+
+        .theme-toggle svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            padding: 0.5rem;
+            border: none;
+            background: transparent;
+            border-radius: 6px;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        .mobile-menu-btn:hover {
+            background: var(--bg-gray);
+        }
+
+        .mobile-menu-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Navigation */
+        .nav {
+            position: sticky;
+            top: 60px;
+            z-index: 40;
+            background: var(--bg-gray);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 0.25rem;
+            padding: 0.75rem 0;
+        }
+
+        .nav-tab {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.875rem;
+            border: none;
+            cursor: pointer;
+            color: var(--text-secondary);
+            background: transparent;
+        }
+
+        .nav-tab:hover {
+            background: var(--bg-light);
+            color: var(--text-primary);
+        }
+
+        .nav-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .nav-tab svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            display: none;
+            padding: 0.75rem 0;
+            gap: 0.25rem;
+            flex-direction: column;
+        }
+
+        .mobile-nav.open {
+            display: flex;
+        }
+
+        .mobile-nav .nav-tab {
+            width: 100%;
+            justify-content: flex-start;
+            padding: 0.75rem 1rem;
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-gray);
+        }
+
+        .card-header.primary {
+            background: var(--primary);
+            color: white;
+            border-bottom: none;
+        }
+
+        .card-header.success {
+            background: var(--success);
+            color: white;
+            border-bottom: none;
+        }
+
+        .card-header.warning {
+            background: var(--warning);
+            color: white;
+            border-bottom: none;
+        }
+
+        .card-header.danger {
+            background: var(--danger);
+            color: white;
+            border-bottom: none;
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .card-title svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .card-description {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin-top: 0.25rem;
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        /* Department Cards */
+        .dept-card {
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg-light);
+        }
+
+        .dept-card.green {
+            border-color: #10b981;
+            background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
+        }
+
+        body.dark .dept-card.green {
+            background: rgba(5, 150, 105, 0.1);
+        }
+
+        .dept-card.orange {
+            border-color: #f59e0b;
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+        }
+
+        body.dark .dept-card.orange {
+            background: rgba(217, 119, 6, 0.1);
+        }
+
+        .dept-card.blue {
+            border-color: #3b82f6;
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+        }
+
+        body.dark .dept-card.blue {
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .dept-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .dept-icon.green {
+            background: var(--success);
+        }
+
+        .dept-icon.orange {
+            background: var(--warning);
+        }
+
+        .dept-icon.blue {
+            background: var(--primary);
+        }
+
+        .dept-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .dept-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .badge.green {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        body.dark .badge.green {
+            background: rgba(5, 150, 105, 0.2);
+            color: #6ee7b7;
+        }
+
+        .badge.orange {
+            background: #fed7aa;
+            color: #9a3412;
+        }
+
+        body.dark .badge.orange {
+            background: rgba(217, 119, 6, 0.2);
+            color: #fdba74;
+        }
+
+        .badge.blue {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        body.dark .badge.blue {
+            background: rgba(59, 130, 246, 0.2);
+            color: #93c5fd;
+        }
+
+        .dept-desc {
+            font-size: 0.875rem;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+
+        /* Rank Items */
+        .rank-item {
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid;
+        }
+
+        .rank-item.red {
+            background: #fef2f2;
+            border-left-color: #ef4444;
+        }
+
+        body.dark .rank-item.red {
+            background: rgba(220, 38, 38, 0.1);
+        }
+
+        .rank-item.orange {
+            background: #fff7ed;
+            border-left-color: #f97316;
+        }
+
+        body.dark .rank-item.orange {
+            background: rgba(234, 88, 12, 0.1);
+        }
+
+        .rank-item.yellow {
+            background: #fefce8;
+            border-left-color: #eab308;
+        }
+
+        body.dark .rank-item.yellow {
+            background: rgba(217, 119, 6, 0.1);
+        }
+
+        .rank-item.green {
+            background: #f0fdf4;
+            border-left-color: #22c55e;
+        }
+
+        body.dark .rank-item.green {
+            background: rgba(5, 150, 105, 0.1);
+        }
+
+        .rank-level {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+        }
+
+        .rank-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Force Levels */
+        .force-level {
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+            border: 1px solid var(--border);
+            background: var(--bg-gray);
+        }
+
+        .force-level h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+        }
+
+        .force-level p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Core Values */
+        .value-card {
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg-light);
+        }
+
+        .value-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .value-icon svg {
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+
+        .value-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .value-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Accordion */
+        .accordion {
+            margin-bottom: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .accordion-trigger {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .accordion-trigger:hover {
+            background: var(--primary-dark);
+        }
+
+        .accordion-trigger-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .accordion-trigger-left {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .accordion-trigger svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .accordion-content {
+            display: none;
+            background: var(--bg-light);
+            padding: 1.5rem;
+        }
+
+        .accordion-content.active {
+            display: block;
+        }
+
+        .procedure-subtitle {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .procedure-steps {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .procedure-steps li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+            color: var(--text-primary);
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+
+        .procedure-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-steps {
+            list-style: none;
+        }
+
+        .section-steps li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-primary);
+        }
+
+        .bullet {
+            flex-shrink: 0;
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+            margin-top: 6px;
+        }
+
+        /* Warning and Info Boxes */
+        .warning-box {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        body.dark .warning-box {
+            background: rgba(217, 119, 6, 0.1);
+            border-color: #92400e;
+        }
+
+        .warning-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+
+        body.dark .warning-title {
+            color: #fbbf24;
+        }
+
+        .warning-text {
+            font-size: 0.875rem;
+            color: #b45309;
+            font-style: italic;
+        }
+
+        body.dark .warning-text {
+            color: #fbbf24;
+        }
+
+        .demands-box {
+            background: #ecfdf5;
+            border: 1px solid #10b981;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        body.dark .demands-box {
+            background: rgba(5, 150, 105, 0.1);
+            border-color: #047857;
+        }
+
+        .demands-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #047857;
+            margin-bottom: 0.75rem;
+        }
+
+        body.dark .demands-title {
+            color: #6ee7b7;
+        }
+
+        .demands-list {
+            list-style: none;
+        }
+
+        .demands-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            color: #047857;
+        }
+
+        body.dark .demands-list li {
+            color: #6ee7b7;
+        }
+
+        .demands-bullet {
+            width: 6px;
+            height: 6px;
+            background: #10b981;
+            border-radius: 50%;
+        }
+
+        /* Search */
+        .search-container {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            color: var(--text-light);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.875rem;
+            background: var(--bg-light);
+            color: var(--text-primary);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Code Grid */
+        .code-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .code-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .code-item:hover {
+            box-shadow: var(--shadow);
+        }
+
+        .code-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .code-meaning {
+            font-size: 0.875rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Radio Rules */
+        .radio-rules {
+            list-style: none;
+        }
+
+        .radio-rules li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .check-icon {
+            width: 16px;
+            height: 16px;
+            color: var(--success);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Legal Sections */
+        .legal-section {
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border);
+        }
+
+        .legal-section h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .legal-section p {
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .legal-section.rs {
+            background: #fff7ed;
+            border-color: #fdba74;
+        }
+
+        body.dark .legal-section.rs {
+            background: rgba(234, 88, 12, 0.1);
+            border-color: #9a3412;
+        }
+
+        .legal-section.pc {
+            background: #fef2f2;
+            border-color: #fca5a5;
+        }
+
+        body.dark .legal-section.pc {
+            background: rgba(220, 38, 38, 0.1);
+            border-color: #991b1b;
+        }
+
+        /* Crime Classifications */
+        .crime-section {
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border);
+        }
+
+        .crime-section h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+        }
+
+        .crime-section p {
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-secondary);
+        }
+
+        .crime-section.infraction {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+        }
+
+        body.dark .crime-section.infraction {
+            background: rgba(5, 150, 105, 0.1);
+            border-color: #065f46;
+        }
+
+        .crime-section.misdemeanor {
+            background: #fefce8;
+            border-color: #fde047;
+        }
+
+        body.dark .crime-section.misdemeanor {
+            background: rgba(217, 119, 6, 0.1);
+            border-color: #a16207;
+        }
+
+        .crime-section.felony {
+            background: #fef2f2;
+            border-color: #fca5a5;
+        }
+
+        body.dark .crime-section.felony {
+            background: rgba(220, 38, 38, 0.1);
+            border-color: #991b1b;
+        }
+
+        /* Deadly Force */
+        .deadly-force-box {
+            background: #fef2f2;
+            border: 1px solid #fca5a5;
+            border-radius: 6px;
+            padding: 1.5rem;
+        }
+
+        body.dark .deadly-force-box {
+            background: rgba(220, 38, 38, 0.1);
+            border-color: #991b1b;
+        }
+
+        .deadly-force-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #991b1b;
+            margin-bottom: 1rem;
+        }
+
+        body.dark .deadly-force-title {
+            color: #fca5a5;
+        }
+
+        .deadly-force-list {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .deadly-force-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #991b1b;
+        }
+
+        body.dark .deadly-force-list li {
+            color: #fca5a5;
+        }
+
+        .warning-icon {
+            width: 16px;
+            height: 16px;
+            color: #dc2626;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .note-box {
+            background: #fee2e2;
+            border: 1px solid #fca5a5;
+            border-radius: 6px;
+            padding: 1rem;
+        }
+
+        body.dark .note-box {
+            background: rgba(220, 38, 38, 0.2);
+            border-color: #991b1b;
+        }
+
+        .note-text {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #991b1b;
+        }
+
+        body.dark .note-text {
+            color: #fca5a5;
+        }
+
+        /* HUT Charge */
+        .hut-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .hut-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .hut-list {
+            list-style: none;
+        }
+
+        .hut-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+            color: var(--text-primary);
+        }
+
+        .hut-check {
+            width: 16px;
+            height: 16px;
+            color: var(--primary);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* SASP Center Display */
+        .sasp-display {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .sasp-display h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .sasp-display p {
+            font-size: 1.125rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .nav-tabs {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .title-section {
+                display: none;
+            }
+            
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .grid-3 {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                padding: 1rem;
+            }
+            
+            .card-content {
+                padding: 1rem;
+            }
+            
+            .card-header {
+                padding: 0.75rem 1rem;
+            }
+            
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            
+            .code-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-gray);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-light);
+        }
+
+/* Remove background from badge containers */
+.badge {
+    background: transparent !important;
+    border: none !important;
+    padding: 0;
+}
+
+/* Style for the logo images */
+.badge-image {
+    max-width: 70px; /* Adjust as needed */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    background: transparent;
+}
+
+.badge-image-sasp {
+    max-width: 130px; /* Adjust as needed */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    background: transparent;
+}
+
+
+  body {
+    -webkit-user-select: none; /* Chrome, Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+    user-select: none;         /* Standard syntax */
+    -webkit-user-drag: none;   /* Prevent image dragging */
+  }
+
+  img {
+    pointer-events: none;
+    -webkit-user-drag: none;
+  }
+
+
+
+    </style>
+</head>
+<body>
+
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i data-lucide="menu"></i>
+            </button>
+            
+            <div class="logo-section">
+                
+                <div class="title-section">
+                    <h1>Police Training Guide</h1>
+                     
+                    <p>San Andreas State Police</p>
+                </div>
+            </div>
+            
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <i data-lucide="sun" id="theme-icon"></i>
+                <span id="theme-text">Dark</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="nav-tabs" id="nav-tabs">
+                <button class="nav-tab active" data-tab="basics">
+                    <i data-lucide="shield"></i>
+                    <span>Basics</span>
+                </button>
+                <button class="nav-tab" data-tab="structure">
+                    <i data-lucide="users"></i>
+                    <span>Structure</span>
+                </button>
+                <button class="nav-tab" data-tab="procedures">
+                    <i data-lucide="file-text"></i>
+                    <span>Procedures</span>
+                </button>
+                <button class="nav-tab" data-tab="codes">
+                    <i data-lucide="radio"></i>
+                    <span>10-Codes</span>
+                </button>
+                <button class="nav-tab" data-tab="legal">
+                    <i data-lucide="scale"></i>
+                    <span>Legal</span>
+                </button>
+            </div>
+            
+            <div class="mobile-nav" id="mobile-nav">
+                <button class="nav-tab active" data-tab="basics">
+                    <i data-lucide="shield"></i>
+                    <span>Basics</span>
+                </button>
+                <button class="nav-tab" data-tab="structure">
+                    <i data-lucide="users"></i>
+                    <span>Structure</span>
+                </button>
+                <button class="nav-tab" data-tab="procedures">
+                    <i data-lucide="file-text"></i>
+                    <span>Procedures</span>
+                </button>
+                <button class="nav-tab" data-tab="codes">
+                    <i data-lucide="radio"></i>
+                    <span>10-Codes</span>
+                </button>
+                <button class="nav-tab" data-tab="legal">
+                    <i data-lucide="scale"></i>
+                    <span>Legal</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Basics Tab -->
+        <div class="tab-content active" id="basics">
+            <!-- SASP Full Form -->
+            <div class="card">
+                <div class="card-header primary">
+                    <div class="card-title">
+                        <i data-lucide="shield"></i>
+                        <span>SASP Full Form</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="sasp-display">
+                        <img src="index_files/Sasp_logo.webp" alt="SASPR Logo" class="badge-image-sasp">
+                        <h3 class="font-roboto">SASP</h3>
+                        <p>San Andreas State Police</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mission Statement -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <i data-lucide="target"></i>
+                        <span>Mission Statement</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p>To protect and serve the citizens of San Andreas with integrity, professionalism, and dedication to justice, ensuring safety on highways, state jurisdictions, and rural areas.</p>
+                </div>
+            </div>
+<!-- Sub-Departments -->
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <i data-lucide="users"></i>
+            
+            <span>SASP Sub-Departments</span>
+        </div>
+        <div class="card-description">Three main departments under the San Andreas State Police</div>
+    </div>
+    <div class="card-content">
+        <div class="grid grid-3">
+            <!-- SASPR -->
+            <div class="dept-card green">
+                 <div class="badge">
+                    <img src="index_files/unnamed.png" alt="SASPR Logo" class="badge-image">
+                </div>
+                <h3 class="dept-title">San Andreas State Park Rangers</h3>
+               
+                <p class="dept-desc">
+                    Provide general law enforcement and criminal investigation services throughout areas where wildlife are more known to reside, and investigate wildlife sporting activities such as fishing and hunting.
+                </p>
+            </div>
+
+            <!-- BCSO -->
+            <div class="dept-card orange">
+               <div class="badge">
+                    <img src="index_files/BCSO.png" alt="BCSO Logo" class="badge-image">
+                </div>
+                <h3 class="dept-title">Blaine County Sheriff's Office</h3>
+                
+                <p class="dept-desc">
+                    Provides general law enforcement and criminal investigation services to the citizens of Blaine County.
+                </p>
+            </div>
+
+            <!-- LSPD -->
+            <div class="dept-card blue">
+                <div class="badge">
+                    <img src="index_files/LSPD.png" alt="LSPD Logo" class="badge-image">
+                </div>
+                <h3 class="dept-title">Los Santos Police Department</h3>
+                
+                <p class="dept-desc">
+                    Provides general law enforcement and criminal investigation services to the citizens of Los Santos.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+        <!-- Structure Tab -->
+        <div class="tab-content" id="structure">
+            <div class="grid grid-2">
+                <!-- Departmental Structure -->
+                <div class="card">
+                    <div class="card-header primary">
+                        <div class="card-title">
+                            <i data-lucide="users"></i>
+                            <span>Departmental Structure</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="rank-item red">
+                            <div class="rank-level">I. High Command</div>
+                            <p class="rank-desc">SASP Member > LSPD/BCSO Chief > LSPD/BCSO Asst Chief</p>
+                        </div>
+                        <div class="rank-item orange">
+                            <div class="rank-level">II. Supervisors</div>
+                            <p class="rank-desc">Captain</p>
+                        </div>
+                        <div class="rank-item yellow">
+                            <div class="rank-level">III. Command Officer</div>
+                            <p class="rank-desc">Lieutenant > Operational Sergeant > Sergeant</p>
+                        </div>
+                        <div class="rank-item green">
+                            <div class="rank-level">IV. Patrol Officer</div>
+                            <p class="rank-desc">Corporal > Senior Officer > Officer > Probationary Officer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Levels of Force -->
+                <div class="card">
+                    <div class="card-header danger">
+                        <div class="card-title">
+                            <i data-lucide="alert-triangle"></i>
+                            <span>Levels of Force</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="force-level">
+                            <h4>Level 1 - Officer Presence</h4>
+                            <p>No force is used.</p>
+                        </div>
+                        <div class="force-level">
+                            <h4>Level 2 - Verbalization</h4>
+                            <p>Force is not physical.</p>
+                        </div>
+                        <div class="force-level">
+                            <h4>Level 3 - Empty Hand Control</h4>
+                            <p>LEOs use bodily force to gain control of a situation.</p>
+                        </div>
+                        <div class="force-level">
+                            <h4>Level 4 - Less-Lethal Methods</h4>
+                            <p>LEOs use less-lethal technologies to gain control of a situation.</p>
+                        </div>
+                        <div class="force-level">
+                            <h4>Level 5 - Lethal Force</h4>
+                            <p>LEOs use lethal weapons to gain control of a situation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Values -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <i data-lucide="star"></i>
+                        <span>Core Values of an Officer</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="grid grid-3">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i data-lucide="shield"></i>
+                            </div>
+                            <h4 class="value-title">Integrity</h4>
+                            <p class="value-desc">Do the right thing, even when no one is watching.</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i data-lucide="users"></i>
+                            </div>
+                            <h4 class="value-title">Service</h4>
+                            <p class="value-desc">Dedication to protecting and aiding the public.</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i data-lucide="check-circle"></i>
+                            </div>
+                            <h4 class="value-title">Accountability</h4>
+                            <p class="value-desc">Own your actions, both right and wrong.</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i data-lucide="star"></i>
+                            </div>
+                            <h4 class="value-title">Professionalism</h4>
+                            <p class="value-desc">Maintain respect, discipline, and duty at all times.</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i data-lucide="heart"></i>
+                            </div>
+                            <h4 class="value-title">Loyalty</h4>
+                            <p class="value-desc">Commitment to the department, the badge, and the citizens.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Procedures Tab -->
+        <div class="tab-content" id="procedures">
+            <!-- Traffic Stops -->
+            <div class="accordion">
+                <button class="accordion-trigger" data-accordion="traffic-stops">
+                    <div class="accordion-trigger-content">
+                        <div class="accordion-trigger-left">
+                            <i data-lucide="car"></i>
+                            <span>Traffic Stops</span>
+                        </div>
+                        <i data-lucide="chevron-right" class="accordion-chevron"></i>
+                    </div>
+                </button>
+                <div class="accordion-content" id="traffic-stops">
+                    <ol class="procedure-steps">
+                        <li>
+                            <span class="step-number">1</span>
+                            <span>Activate lights/sirens</span>
+                        </li>
+                        <li>
+                            <span class="step-number">2</span>
+                            <span>Keep your vehicle formation according to the SOP's</span>
+                        </li>
+                        <li>
+                            <span class="step-number">3</span>
+                            <span>Approach carefully (prefer ride-along officer approach if needed)</span>
+                        </li>
+                        <li>
+                            <span class="step-number">4</span>
+                            <span>Identify yourself: "This is [Callsign] Officer [Your name] From the San Andreas State Police..."</span>
+                        </li>
+                        <li>
+                            <span class="step-number">5</span>
+                            <span>First ask the driver if he knows the reason for stopping</span>
+                        </li>
+                        <li>
+                            <span class="step-number">6</span>
+                            <span>Request for license, registration, proof of insurance</span>
+                        </li>
+                        <li>
+                            <span class="step-number">7</span>
+                            <span>Run information via MDT</span>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Arrest Procedure -->
+            <div class="accordion">
+                <button class="accordion-trigger" data-accordion="arrest-procedure">
+                    <div class="accordion-trigger-content">
+                        <div class="accordion-trigger-left">
+                            <i data-lucide="user-check"></i>
+                            <span>Arrest Procedure</span>
+                        </div>
+                        <i data-lucide="chevron-right" class="accordion-chevron"></i>
+                    </div>
+                </button>
+                <div class="accordion-content" id="arrest-procedure">
+                    <ol class="procedure-steps">
+                        <li>
+                            <span class="step-number">1</span>
+                            <span>Detain first if needed</span>
+                        </li>
+                        <li>
+                            <span class="step-number">2</span>
+                            <span>Read Miranda Rights</span>
+                        </li>
+                        <li>
+                            <span class="step-number">3</span>
+                            <span>Frisk the suspect</span>
+                        </li>
+                        <li>
+                            <span class="step-number">4</span>
+                            <span>If he carries any lethal weapon with him, confiscate it only and collect the evidence</span>
+                        </li>
+                        <li>
+                            <span class="step-number">5</span>
+                            <span>Transport to the station</span>
+                        </li>
+                    </ol>
+                    <div class="warning-box">
+                        <h4 class="warning-title">Miranda Rights:</h4>
+                        <p class="warning-text">
+                            "You have the right to remain silent. Anything that you say can and will be used against you in a court of law. You have the right to an attorney. If you cannot afford one, one will be provided by the State if available. Do you understand these rights as I have read them to you, Sir/Ma'am?"
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pursuit Protocol -->
+            <div class="accordion">
+                <button class="accordion-trigger" data-accordion="pursuit-protocol">
+                    <div class="accordion-trigger-content">
+                        <div class="accordion-trigger-left">
+                            <i data-lucide="zap"></i>
+                            <span>Pursuit Protocol</span>
+                        </div>
+                        <i data-lucide="chevron-right" class="accordion-chevron"></i>
+                    </div>
+                </button>
+                <div class="accordion-content" id="pursuit-protocol">
+                    <ol class="procedure-steps">
+                        <li>
+                            <span class="step-number">1</span>
+                            <span>Maintain communication</span>
+                        </li>
+                        <li>
+                            <span class="step-number">2</span>
+                            <span>Call for backup units</span>
+                        </li>
+                        <li>
+                            <span class="step-number">3</span>
+                            <span>Use spike strips or PIT with supervisor approval (based on SOP)</span>
+                        </li>
+                        <li>
+                            <span class="step-number">4</span>
+                            <span>Terminate safely—ensure no civilians are harmed</span>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Felony Stop -->
+            <div class="accordion">
+                <button class="accordion-trigger" data-accordion="felony-stop">
+                    <div class="accordion-trigger-content">
+                        <div class="accordion-trigger-left">
+                            <i data-lucide="alert-triangle"></i>
+                            <span>Felony Stop Procedures</span>
+                        </div>
+                        <i data-lucide="chevron-right" class="accordion-chevron"></i>
+                    </div>
+                </button>
+                <div class="accordion-content" id="felony-stop">
+                    <p class="procedure-subtitle">Used when dealing with armed suspects, felons, or high-risk vehicles.</p>
+                    
+                    <div class="procedure-section">
+                        <h4 class="section-title">1. Radio In:</h4>
+                        <ul class="section-steps">
+                            <li>
+                                <span class="bullet"></span>
+                                <span>Call it in: "Dispatch, [Callsign]. Initiating a felony stop on a black Sultan, plate 82ASX721, occupied by x2, [reason]."</span>
+
+                            </li>
+                            <li>
+                                <span class="bullet"></span>
+                                <span>Request backup before proceeding</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="procedure-section">
+                        <h4 class="section-title">2. Positioning:</h4>
+                        <ul class="section-steps">
+                            <li>
+                                <span class="bullet"></span>
+                                <span>Primary unit positions similar to normal traffic stop</span>
+                            </li>
+                            <li>
+                                <span class="bullet"></span>
+                                <span>Secondary unit on either side at 45-degree angle</span>
+                            </li>
+                            <li>
+                                <span class="bullet"></span>
+                                <span>Tertiary unit on opposite side at 45-degree angle</span>
+                            </li>
+                            <li>
+                                <span class="bullet"></span>
+                                <span>Exit vehicle with weapon drawn and use door for cover</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="procedure-section">
+                        <h4 class="section-title">3. Give Clear Verbal Commands (One Officer Only):</h4>
+                        <ul class="section-steps">
+                            <li>
+                                <span class="bullet"></span>
+                                <span>"Driver, turn off the engine and put both hands out the window!"</span>
+                            </li>
+                            <li>
+                                <span class="bullet"></span>
+                                <span>"Open the door from the outside and step out slowly, face away!"</span>
+                            </li>
+                            <li>
+                                <span class="bullet"></span>
+                                <span>"Walk backward toward the sound of my voice! Get on your knees!"</span>
+                            </li>
+                            <li>
+                                <span class="bullet"></span>
+                                <span>Repeat for each passenger, one at a time</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Robbery Negotiation -->
+            <div class="accordion">
+                <button class="accordion-trigger" data-accordion="robbery-negotiation">
+                    <div class="accordion-trigger-content">
+                        <div class="accordion-trigger-left">
+                            <i data-lucide="message-square"></i>
+                            <span>Robbery Negotiation Procedure</span>
+                        </div>
+                        <i data-lucide="chevron-right" class="accordion-chevron"></i>
+                    </div>
+                </button>
+                <div class="accordion-content" id="robbery-negotiation">
+                    <ol class="procedure-steps">
+                        <li>
+                            <span class="step-number">1</span>
+                            <span>Introduce yourself: "This is [Callsign] Officer [Anon], I'm your negotiation officer."</span>
+                            
+                        </li>
+                        <li>
+                            <span class="step-number">2</span>
+                            <span>Ask the robbers about their robbery (Not Mandatory)</span>
+                        </li>
+                        <li>
+                            <span class="step-number">3</span>
+                            <span>Observe how many robbers are inside and what weapons they carry</span>
+                        </li>
+                        <li>
+                            <span class="step-number">4</span>
+                            <span>Ask the robbers to talk with the hostage</span>
+                        </li>
+                        <li>
+                            <span class="step-number">5</span>
+                            <span>Ask the hostage if they need medical assistance or food</span>
+                        </li>
+                        <li>
+                            <span class="step-number">6</span>
+                            <span>Ask the robbers what their demands are to release the hostage</span>
+                        </li>
+                        <li>
+                            <span class="step-number">7</span>
+                            <span>Update the statement to the Commanding Officer</span>
+                        </li>
+                    </ol>
+                    <div class="demands-box">
+                        <h4 class="demands-title">Possible Demands (Max 2):</h4>
+                        <ul class="demands-list">
+                            <li>
+                                <span class="demands-bullet"></span>
+                                <span>Free Passage</span>
+                            </li>
+                            <li>
+                                <span class="demands-bullet"></span>
+                                <span>No Spike</span>
+                            </li>
+                            <li>
+                                <span class="demands-bullet"></span>
+                                <span>No Helicopter</span>
+                            </li>
+                            <li>
+                                <span class="demands-bullet"></span>
+                                <span>No Tracker</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 10-Codes Tab -->
+        <div class="tab-content" id="codes">
+            <div class="card">
+                <div class="card-header success">
+                    <div class="card-title">
+                        <i data-lucide="radio"></i>
+                        <span>10-Codes & Radio Communication</span>
+                    </div>
+                    <div class="card-description">Essential radio codes for law enforcement communication</div>
+                </div>
+                <div class="card-content">
+                    <!-- Search -->
+                    <div class="search-container">
+                        <i data-lucide="search" class="search-icon"></i>
+                        <input type="text" class="search-input" placeholder="Search codes...  Using Code, Description, Similar Words" id="code-search">
+                    </div>
+
+                    <!-- Codes Grid -->
+                    <div class="code-grid" id="codes-container">
+                        <!-- Codes will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Radio Discipline -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <i data-lucide="check-circle"></i>
+                        <span>Radio Discipline</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <ul class="radio-rules">
+                        <li>
+                            <i data-lucide="check-circle" class="check-icon"></i>
+                            <span>Be short, clear, and professional</span>
+                        </li>
+                        <li>
+                            <i data-lucide="check-circle" class="check-icon"></i>
+                            <span>Don't clog the air with unnecessary chatter</span>
+                        </li>
+                        <li>
+                            <i data-lucide="check-circle" class="check-icon"></i>
+                            <span>Always identify yourself: "[Your Callsign], then your call"</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legal Tab -->
+        <div class="tab-content" id="legal">
+            <div class="grid grid-2">
+                <!-- Reasonable Suspicion vs Probable Cause -->
+                <div class="card">
+                    <div class="card-header warning">
+                        <div class="card-title">
+                            <i data-lucide="scale"></i>
+                            <span>Reasonable Suspicion vs Probable Cause</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="legal-section rs">
+                            <h4>Reasonable Suspicion (RS)</h4>
+                            <p>A gut feeling based on facts that someone might be doing something illegal.</p>
+                            <p><strong>Allows:</strong> Stopping and briefly detaining someone (traffic stop, frisk)</p>
+                        </div>
+                        <div class="legal-section pc">
+                            <h4>Probable Cause (PC)</h4>
+                            <p>Reasonable belief, based on facts and evidence, that a crime has been or is being committed.</p>
+                            <p><strong>Allows:</strong> Making an arrest, searching a car/house/person, getting a warrant</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Crime Classifications -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i data-lucide="gavel"></i>
+                            <span>Crime Classifications</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="crime-section infraction">
+                            <h4>Infraction</h4>
+                            <p>Minor offense, usually no jail time</p>
+                            <p><strong>Examples:</strong> Jaywalking, parking violations</p>
+                        </div>
+                        <div class="crime-section misdemeanor">
+                            <h4>Misdemeanor</h4>
+                            <p>Minor offense with possible jail time</p>
+                            <p><strong>Examples:</strong> Simple assault, petty theft</p>
+                        </div>
+                        <div class="crime-section felony">
+                            <h4>Felony</h4>
+                            <p>Serious crime with major consequences</p>
+                            <p><strong>Examples:</strong> Murder, armed robbery, GTA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deadly Force Policy -->
+            <div class="card">
+                <div class="card-header danger">
+                    <div class="card-title">
+                        <i data-lucide="alert-triangle"></i>
+                        <span>Deadly Force Policy</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="deadly-force-box">
+                        <h4 class="deadly-force-title">Only use your firearm:</h4>
+                        <ul class="deadly-force-list">
+                            <li>
+                                <i data-lucide="alert-triangle" class="warning-icon"></i>
+                                <span>If your life or another's is in immediate danger</span>
+                            </li>
+                            <li>
+                                <i data-lucide="alert-triangle" class="warning-icon"></i>
+                                <span>Give him 3 warnings to surrender</span>
+                            </li>
+                            <li>
+                                <i data-lucide="alert-triangle" class="warning-icon"></i>
+                                <span>As a last resort, not a first reaction</span>
+                            </li>
+                            <li>
+                                <i data-lucide="alert-triangle" class="warning-icon"></i>
+                                <span>Always justify the force used in a use-of-force report (if applicable)</span>
+                            </li>
+                        </ul>
+                        <div class="note-box">
+                            <p class="note-text">Note: Unlawful shootings = demotion, strike, or removal from the department.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HUT Charge -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <i data-lucide="book-open"></i>
+                        <span>HUT Charge (Hold Until Trial)</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p class="hut-desc">
+                        A HUT charge is used when a suspect is arrested for a serious crime (usually a felony) and cannot be granted bail and must stay in custody until their court trial.
+                    </p>
+                    <h4 class="hut-title">When to Apply HUT:</h4>
+                    <ul class="hut-list">
+                        <li>
+                            <i data-lucide="check-circle" class="hut-check"></i>
+                            <span>Suspects committed a violent felony (e.g., murder, terrorism)</span>
+                        </li>
+                        <li>
+                            <i data-lucide="check-circle" class="hut-check"></i>
+                            <span>Suspect is a flight risk or likely to tamper with evidence</span>
+                        </li>
+                        <li>
+                            <i data-lucide="check-circle" class="hut-check"></i>
+                            <span>The suspect has repeat offenses or pending cases</span>
+                        </li>
+                        <li>
+                            <i data-lucide="check-circle" class="hut-check"></i>
+                            <span>No judge or bail hearing is currently available (RP reason)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // 10-Codes data
+        const tenCodes = [
+              { "code": "Code 0", "meaning": "Game Crashed" },
+  { "code": "Code 1", "meaning": "Responding No Lights/Sirens/Patrolling" },
+  { "code": "Code 2", "meaning": "Responding with Lights w/ Intermittent Sirens" },
+  { "code": "Code 3", "meaning": "Responding with Lights and Sirens" },
+  { "code": "Code 4", "meaning": "Under Control" },
+  { "code": "Code 5", "meaning": "Felony Traffic Stop" },
+  { "code": "Code 6", "meaning": "Searching Area" },
+  { "code": "Code 11", "meaning": "Running Radar" },
+  { "code": "Code 36", "meaning": "Posted Traffic Enforcement" },
+  { "code": "Code 44", "meaning": "Food Break" },
+  { "code": "Code 50", "meaning": "Report Writing" },
+  { "code": "Code 100", "meaning": "Emergency Assistant required" },
+ { "code": "10-0", "meaning": "Caution" },
+  { "code": "10-1", "meaning": "Signal weak / Unable to copy" },
+  { "code": "10-2", "meaning": "Signal good" },
+  { "code": "10-3", "meaning": "Stop transmitting" },
+  { "code": "10-4", "meaning": "Acknowledgement (Ok)" },
+  { "code": "10-5", "meaning": "Relay" },
+  { "code": "10-6", "meaning": "Busy" },
+  { "code": "10-7", "meaning": "Out of service" },
+  { "code": "10-8", "meaning": "In service" },
+  { "code": "10-9", "meaning": "Repeat" },
+  { "code": "10-10", "meaning": "Negative" },
+  { "code": "10-11", "meaning": "Traffic stop" },
+  { "code": "10-12", "meaning": "Standby" },
+  { "code": "10-13", "meaning": "Shots fired" },
+  { "code": "10-14", "meaning": "Officer Down" },
+  { "code": "10-15", "meaning": "Suspect in custody" },
+  { "code": "10-16", "meaning": "Return to pillbox" },
+  { "code": "10-17", "meaning": "Meet complainant" },
+  { "code": "10-18", "meaning": "Quickly / Urgent response" },
+  { "code": "10-19", "meaning": "Returning to PD" },
+  { "code": "10-20", "meaning": "Location" },
+  { "code": "10-21", "meaning": "Call by phone" },
+  { "code": "10-22", "meaning": "Disregard" },
+  { "code": "10-23", "meaning": "Arrived at scene" },
+  { "code": "10-24", "meaning": "Assignment Completed" },
+  { "code": "10-25", "meaning": "Report to / Meet in person" },
+  { "code": "10-26", "meaning": "Detaining Suspect" },
+  { "code": "10-27", "meaning": "Drivers License / ID check" },
+  { "code": "10-28", "meaning": "Vehicle Plate Check" },
+  { "code": "10-29", "meaning": "Warrant Check" },
+  { "code": "10-30", "meaning": "Unnecessary use of radio" },
+  { "code": "10-31", "meaning": "Crime in progress" },
+  { "code": "10-32", "meaning": "Person with a gun" },
+  { "code": "10-33", "meaning": "Emergency Clear Channel" },
+  { "code": "10-34", "meaning": "Riot" },
+  { "code": "10-35", "meaning": "Major Crime Alert" },
+  { "code": "10-36", "meaning": "Correct Time" },
+  { "code": "10-37", "meaning": "Suspicious Vehicle" },
+  { "code": "10-38", "meaning": "Drug Sale" },
+  { "code": "10-39", "meaning": "Urgent (use Lights and Sirens)" },
+  { "code": "10-40", "meaning": "Silent Run (No lights / Sirens)" },
+  { "code": "10-41", "meaning": "On duty" },
+  { "code": "10-42", "meaning": "Off duty" },
+  { "code": "10-43", "meaning": "Information" },
+  { "code": "10-44", "meaning": "Permission to leave" },
+  { "code": "10-45", "meaning": "Animal Carcass In Road" },
+  { "code": "10-46", "meaning": "Assist Motorist" },
+  { "code": "10-47", "meaning": "Injured Person" },
+  { "code": "10-48", "meaning": "Roadside repair needed" },
+  { "code": "10-49", "meaning": "Traffic light out / Control" },
+  { "code": "10-50", "meaning": "Vehicle accident" },
+  { "code": "10-51", "meaning": "Requesting Tow Truck" },
+  { "code": "10-52", "meaning": "Requesting EMS" },
+  { "code": "10-53", "meaning": "Road Blocked" },
+  { "code": "10-54", "meaning": "Possible Dead Body" },
+  { "code": "10-55", "meaning": "Intoxicated driver" },
+  { "code": "10-56", "meaning": "Intoxicated pedestrian" },
+  { "code": "10-57", "meaning": "Hit and run" },
+  { "code": "10-58", "meaning": "Direct Traffic" },
+  { "code": "10-59", "meaning": "Convoy or escort" },
+  { "code": "10-60", "meaning": "Stolen Vehicle" },
+  { "code": "10-61", "meaning": "Reply to message" },
+  { "code": "10-62", "meaning": "Prepare to make written copy" },
+  { "code": "10-63", "meaning": "Message for delivery" },
+  { "code": "10-65", "meaning": "Missing person" },
+  { "code": "10-66", "meaning": "Suspicious Person" },
+  { "code": "10-67", "meaning": "Car jacking / GTA" },
+  { "code": "10-68", "meaning": "Dispatch Information" },
+  { "code": "10-69", "meaning": "Car Boosting" },
+  { "code": "10-70", "meaning": "Explosion" },
+  { "code": "10-71", "meaning": "Shots fired" },
+  { "code": "10-72", "meaning": "Hostage situation" },
+  { "code": "10-73", "meaning": "Advise status" },
+  { "code": "10-74", "meaning": "Fight in progress" },
+  { "code": "10-75", "meaning": "In contact with" },
+  { "code": "10-76", "meaning": "Enroute" },
+  { "code": "10-77", "meaning": "Need Backup (Non-Emergency)" },
+  { "code": "10-78", "meaning": "Need Backup (Emergency)" },
+  { "code": "10-79", "meaning": "Notify Coroner" },
+  { "code": "10-80", "meaning": "Pursuit in Progress" },
+  { "code": "10-81", "meaning": "Breathalyzer Report / Test" },
+  { "code": "10-82", "meaning": "Reserve lodging" },
+  { "code": "10-83", "meaning": "Work School crossing at" },
+  { "code": "10-84", "meaning": "If meeting advise ETA" },
+  { "code": "10-85", "meaning": "Delay due to" },
+  { "code": "10-86", "meaning": "Officer / unit on duty" },
+  { "code": "10-87", "meaning": "Pickup / distribute check" },
+  { "code": "10-88", "meaning": "Present telephone number of" },
+  { "code": "10-89", "meaning": "Bomb threat" },
+  { "code": "10-90", "meaning": "Robbery in progress" },
+  { "code": "10-91", "meaning": "Transport unit" },
+  { "code": "10-92", "meaning": "Improperly parked vehicle" },
+  { "code": "10-93", "meaning": "Blockade" },
+  { "code": "10-94", "meaning": "Drag racing" },
+  { "code": "10-95", "meaning": "Prisoner in custody" },
+  { "code": "10-96", "meaning": "Mental subject" },
+  { "code": "10-97", "meaning": "Check (Test) Signal" },
+  { "code": "10-98", "meaning": "Jail Break" },
+  { "code": "10-99", "meaning": "All Units Respond" }
+        ];
+
+        
+        // Theme functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+            
+            if (body.classList.contains('dark')) {
+                body.classList.remove('dark');
+                themeIcon.setAttribute('data-lucide', 'sun');
+                themeText.textContent = 'Dark';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.add('dark');
+                themeIcon.setAttribute('data-lucide', 'moon');
+                themeText.textContent = 'Light';
+                localStorage.setItem('theme', 'dark');
+            }
+            lucide.createIcons();
+        }
+
+        // Load saved theme
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark');
+                document.getElementById('theme-icon').setAttribute('data-lucide', 'moon');
+                document.getElementById('theme-text').textContent = 'Light';
+            }
+        }
+
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobile-nav');
+            mobileNav.classList.toggle('open');
+        }
+
+        // Tab functionality
+        function initTabs() {
+            const tabButtons = document.querySelectorAll('.nav-tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all tabs and contents
+                    tabButtons.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding content
+                    button.classList.add('active');
+                    const targetTab = document.getElementById(button.dataset.tab);
+                    if (targetTab) {
+                        targetTab.classList.add('active');
+                    }
+                    
+                    // Close mobile menu after selection
+                    document.getElementById('mobile-nav').classList.remove('open');
+                });
+            });
+        }
+
+        // Accordion functionality
+        function initAccordions() {
+            const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+            
+            accordionTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const content = document.getElementById(trigger.dataset.accordion);
+                    const chevron = trigger.querySelector('.accordion-chevron');
+                    const isActive = content.classList.contains('active');
+                    
+                    // Close all accordions
+                    document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('active'));
+                    document.querySelectorAll('.accordion-chevron').forEach(ch => {
+                        ch.setAttribute('data-lucide', 'chevron-right');
+                    });
+                    
+                    // Open clicked accordion if it wasn't active
+                    if (!isActive) {
+                        content.classList.add('active');
+                        chevron.setAttribute('data-lucide', 'chevron-down');
+                    }
+                    
+                    lucide.createIcons();
+                });
+            });
+        }
+
+        // Render codes
+        function renderCodes(codes) {
+            const container = document.getElementById('codes-container');
+            container.innerHTML = codes.map(item => `
+                <div class="code-item">
+                    <div class="code-badge">${item.code}</div>
+                    <div class="code-meaning">${item.meaning}</div>
+                </div>
+            `).join('');
+        }
+
+        // Search functionality
+        function initSearch() {
+            const searchInput = document.getElementById('code-search');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    const searchTerm = e.target.value.toLowerCase();
+                    const filteredCodes = tenCodes.filter(item =>
+                        item.code.toLowerCase().includes(searchTerm) ||
+                        item.meaning.toLowerCase().includes(searchTerm)
+                    );
+                    renderCodes(filteredCodes);
+                });
+            }
+        }
+
+        // Close mobile menu when clicking outside
+        function initClickOutside() {
+            document.addEventListener('click', (e) => {
+                const mobileNav = document.getElementById('mobile-nav');
+                const mobileToggle = document.querySelector('.mobile-menu-btn');
+                
+                if (mobileNav && mobileToggle && !mobileNav.contains(e.target) && !mobileToggle.contains(e.target)) {
+                    mobileNav.classList.remove('open');
+                }
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTheme();
+            initTabs();
+            initAccordions();
+            initSearch();
+            initClickOutside();
+            renderCodes(tenCodes);
+            lucide.createIcons();
+        });
+    </script>
+
+    <script>
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+</script>
+
+
+    <script>
+  document.addEventListener('keydown', function(e) {
+    // Disable Ctrl+S, Ctrl+U, Ctrl+Shift+I, F12
+    if ((e.ctrlKey && (e.key === 's' || e.key === 'u')) || 
+        (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+        e.key === 'F12') {
+      e.preventDefault();
+    }
+  });
+</script>
+
+
+    
+</body>
+</html>
